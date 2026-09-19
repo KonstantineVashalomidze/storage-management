@@ -8,11 +8,13 @@ Login and registration are custom as well, with role based access controlling wh
 
 ## Stack
 
-Java 21, Neo4j 5.15.0, JGraphX for the graph view, JFreeChart for the analytics charts. The code follows MVC, with a singleton wrapping the Neo4j driver.
+Java, Neo4j, JGraphX for the graph view, JFreeChart for the analytics charts. The code follows MVC, with a singleton wrapping the Neo4j driver. Exact versions are in `pom.xml` if you need them.
 
 ## Running it locally
 
-Clone the repo, then launch Neo4j Desktop and import `neo4j.dump` into a new project. Set `dbms.security.auth_enabled=false` so the app can connect without extra configuration. From there:
+Clone the repo, then open `pom.xml` and set `maven.compiler.source` and `maven.compiler.target` to the JDK version you have installed.
+
+Launch Neo4j Desktop, create a project, and import `neo4j.dump` into it, setting whatever password you like when it asks. Open that DBMS's settings and set `dbms.security.auth_enabled=false` so the app can connect without extra configuration. From there:
 
 ```bash
 mvn clean install
