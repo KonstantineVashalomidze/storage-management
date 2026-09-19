@@ -1,35 +1,23 @@
 # Storage Management System
 
-A desktop inventory system built with Java Swing and Neo4j. It handles products, customers, suppliers, purchases, and transactions, with a graph view, calendar-based analytics, and UI components built from scratch rather than pulled from Swing's stock widgets.
+A desktop inventory app for a small business: products, customers, suppliers, purchases, and transactions, all in one place. I built it with Java Swing and a Neo4j graph database, and wrote every UI component from scratch instead of reaching for Swing's stock widgets.
 
-## Features
+Three parts of it are worth calling out. A table view with live substring search across every field, filterable by dropdown and resizable to fullscreen. A graph view, built with JGraphX, where clicking a node shows how it connects to the rest of the data. And an analytics screen with a custom calendar picker for choosing a date range, feeding charts (built with JFreeChart) for total sales over time, the ten best selling and most profitable products, average delivery time per supplier, and current stock against each product's minimum.
 
-**Data management**
-- Custom table view with real-time substring search across every field
-- Dropdown filters for quick navigation
-- Fullscreen, resizable layout
-
-**Visualization**
-- Interactive graph view of the underlying data, built with JGraphX
-- Click a node to see its full details
-
-**Analytics**
-- Calendar based date range picker for sales analysis
-- Total sales over time, top 10 best selling and most profitable products, average delivery time per supplier, stock levels against minimums
-
-**Auth**
-- Custom login and registration, with role based access
+Login and registration are custom as well, with role based access controlling who can do what.
 
 ## Stack
 
-Java 21, Neo4j 5.15.0, JGraphX 4.2.2 for graph visualization, JFreeChart 1.0.13 for charts. Built with MVC and a singleton for the database connection.
+Java 21, Neo4j 5.15.0, JGraphX for the graph view, JFreeChart for the analytics charts. The code follows MVC, with a singleton wrapping the Neo4j driver.
 
 ## Running it locally
 
-1. Clone the repo and `cd storage-management`
-2. Launch Neo4j Desktop, create a project, and import `neo4j.dump`. Set `dbms.security.auth_enabled=false`
-3. `mvn clean install`
-4. `mvn exec:java -Dexec.mainClass="org.example.views.MainWindow"`
+Clone the repo, then launch Neo4j Desktop and import `neo4j.dump` into a new project. Set `dbms.security.auth_enabled=false` so the app can connect without extra configuration. From there:
+
+```bash
+mvn clean install
+mvn exec:java -Dexec.mainClass="org.example.views.MainWindow"
+```
 
 ## Screenshots
 
@@ -59,7 +47,3 @@ Java 21, Neo4j 5.15.0, JGraphX 4.2.2 for graph visualization, JFreeChart 1.0.13 
 
 ### Stock levels
 ![Stock Analysis](src/main/resources/demo/img_8.png)
-
-## Contact
-
-vashalomidzekonstantine@gmail.com
